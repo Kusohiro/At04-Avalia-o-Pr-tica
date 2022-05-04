@@ -4,6 +4,8 @@
 require_once("class/livro_autor.php");
     require_once("class/Venda.php");
 require_once("class/Autor.php");
+require_once("class/Cliente.php");
+require_once("class/item_venda.php");
 
     function exibir_como_select($key, $dados){
         $str = "<option value=0>Escolha</option>";
@@ -12,7 +14,12 @@ require_once("class/Autor.php");
         }
         return $str;
     }
-
+	 function lista_cliente($id){
+        $cliente = new cliente("", "", "", "", "", "");
+        $lista = $cliente->buscar($id);
+        foreach($lista as $dados)
+            return $dados;
+    }
     function lista_livro($id){
         $livro = new Livro("", "", "", "", "", "");
         $lista = $livro->buscar($id);
@@ -20,8 +27,14 @@ require_once("class/Autor.php");
             return $dados;
     }
 function lista_livro_autor($idLivro, $idAutor){
-        $livroAutor = new Livro_autor("", "");
+        $livroAutor = new Livro_autor("", "", "", "");
         $lista = $livroAutor->buscar($idLivro, $idAutor);
+        foreach($lista as $dados)
+            return $dados;
+    }
+function lista_item_venda($idLivro, $idVenda){
+        $livrovenda = new item_venda("", "", "", "", "", "");
+        $lista = $livrovenda->buscar($idLivro, $idVenda);
         foreach($lista as $dados)
             return $dados;
     }
@@ -52,5 +65,10 @@ function select_livro($id){
         $livroa = new Livro("", "", "", "", "", "");
         $lista = $livroa->buscarLivro();
         return exibir_como_select(array("l_idLivro", "l_titulo"), $lista);
+    }
+function select_venda($id){
+        $vendaa = new item_venda("", "", "", "", "", "");
+        $lista = $vendaa->buscarvenda();
+        return exibir_como_select(array("v_idVenda", "v_idVenda"), $lista);
     }
 ?>

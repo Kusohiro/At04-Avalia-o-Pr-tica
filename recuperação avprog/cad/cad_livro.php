@@ -17,7 +17,7 @@
     <title><?php echo $title; ?></title>
 </head>
 <body>
-    <a href="../index.php">Voltar à página principal</a> |
+    <a href="../indexlivro.php">Voltar à página principal</a> |
     <?php echo $title; ?><br>
     <br>
     <form action="../ctrl/ctrl_livro.php?id=<?php echo $id; ?>" method="post">

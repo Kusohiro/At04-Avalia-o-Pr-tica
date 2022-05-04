@@ -7,7 +7,7 @@
     if($acao == "excluir"){
         $livro = new Livro("", "", "", "", "", "");
         $livro->excluir($id);
-        header("location:../index.php");
+        header("location:../indexlivro.php");
 	}
 
     $acao = isset($_POST["acao"]) ? $_POST["acao"] : "";
@@ -22,10 +22,10 @@
         $livro = new Livro(0, $titulo, $ano_publicacao, $isdn, $preco, $autor);
         if($id == 0){
             $livro->insere();
-            header("location:../index.php");
+            header("location:../indexlivro.php");
         } else{
             $livro->editar($id);
-            header("location:../index.php");
+            header("location:../indexlivro.php");
         }
     }
 ?>

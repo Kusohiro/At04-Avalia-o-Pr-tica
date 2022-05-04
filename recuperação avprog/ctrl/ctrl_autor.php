@@ -5,9 +5,9 @@
     $id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
     if($acao == "excluir"){
-        $Autor = new Autor("", "", "", "", "");
+        $Autor = new Autor("", "", "");
         $Autor->excluir($id);
-        header("location:../index.php");
+        header("location:../indexautor.php");
 	}
 
     $acao = isset($_POST["acao"]) ? $_POST["acao"] : "";
@@ -19,10 +19,10 @@
         $Autor = new Autor(0, $nome, $sobrenome);
         if($id == 0){
             $Autor->insere();
-            header("location:../index.php");
+            header("location:../indexautor.php");
         } else{
             $Autor->editar($id);
-            header("location:../index.php");
+            header("location:../indexautor.php");
         }
     }
 ?>

@@ -2,16 +2,25 @@
     class Livro_autor{
         private $l_idLivro;
         private $a_idAutor;
-        public function __construct($idLivro, $idAutor){
+		private $antidLivro;
+		private $antidAutor;
+        public function __construct($idLivro, $idAutor,$antLivro, $antAutor){
             $this->setIdLivro($idLivro);
             $this->setIdAutor($idAutor);
+			$this->setantIdAutor($antAutor);
+			$this->setantIdLivro($antLivro);
         }
 
         public function getIdLivro(){ return $this->l_idLivro; }
         public function getIdAutor(){ return $this->a_idAutor; }
+		public function getIdAutorant(){ return $this->antidAutor; }
+		public function getIdLivroant(){ return $this->antidLivro; }
+
 
         public function setIdLivro($idLivro){ $this->l_idLivro = $idLivro; }
         public function setIdAutor($idAutor){ $this->a_idAutor = $idAutor; }
+		public function setantIdAutor($antidAutor){ $this->antidAutor = $antidAutor; }
+		public function setantIdLivro($antidLivro){ $this->antiidLivro = $antidLivro; }
 
         public function insere(){
             require_once("../conf/Conexao.php");
@@ -33,13 +42,15 @@
                 return $stmt->fetchAll(); 
             return false;
         }
-        public function editar($idLivro, $idAutor){
+        public function editar($idLivro, $idAutor, $nidLivro, $nidAutor){
             require_once("../conf/Conexao.php");
             $query = "UPDATE Livro_autor
-                    SET la_l_idLivro = :idLivro, la_a_idAutor = :idAutor
+                    SET la_l_idLivro = :nidLivro, la_a_idAutor = :nidAutor
                     WHERE la_l_idLivro = :idLivro and la_a_idAutor = :idAutor";
             $conexao = Conexao::getInstance();
             $stmt = $conexao->prepare($query);
+						$stmt->bindParam(":nidAutor", $nidAutor);
+			$stmt->bindParam(":nidLivro", $nidLivro);
             $stmt->bindParam(":idLivro", $idLivro);
             $stmt->bindParam(":idAutor", $idAutor);
             return $stmt->execute();

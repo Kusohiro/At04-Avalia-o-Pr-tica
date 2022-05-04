@@ -90,6 +90,19 @@
                 return $stmt->fetchAll(); 
             return false;
         }
+		
+		public function listarVenda($idvenda, $nomeC){
+			echo "Venda: $idvenda Cliente: $nomeC
+========================================================
+It | Título | Qtd | Valor Unitário | Valor Total
+--------------------------------------------------------
+1 | XXXXX | 2 | 100.00 | 200.00
+2 | XXXXX | 1 | 50.00 | 50.00
+--------------------------------------------------------
+Total: 250.00
+Desconto: 10.00
+Total Venda: 240.00";
     }
+	}
 
 ?>

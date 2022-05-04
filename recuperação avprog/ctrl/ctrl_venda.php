@@ -1,16 +1,16 @@
 <?php
     require_once("../class/Venda.php");
 
-    //$acao = isset($_GET["acao"]) ? $_GET["acao"] : "";
+    $acao = isset($_GET["acao"]) ? $_GET["acao"] : "";
 
     $id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
-    /*if($acao == "excluir"){
-        $livro = new Livro("", "", "", "", "");
+    if($acao == "excluir"){
+        $livro = new Venda("", "", "", "", "");
         $livro->excluir($id);
-        header("location:../index.php");
-        
-        try{
+        header("location:../indexvenda.php");
+	}
+    /*    try{
             $contaCorrente = new ContaCorrente(1, 1, 1, 1);
             $contaCorrente->excluir($id);
             header("location:../../index.php");
@@ -32,10 +32,10 @@
         $venda = new Venda(0, $valor_total, $desconto, $cliente, $data_venda);
         if($id == 0){
             $venda->insere();
-            header("location:../index.php");
+            header("location:../indexvenda.php");
         } else{
             $venda->editar($id);
-            header("location:../index.php");
+            header("location:../indexvenda.php");
         }
     }
 ?>
